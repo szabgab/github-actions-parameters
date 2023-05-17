@@ -20,7 +20,12 @@ on:
            type: boolean
          environment:
            description: 'Environment to run tests against'
-           type: environment
+           type: string
+           required: true
+         parallel:
+           description: Number of processes in paralle
+           type: number
+           default: 1
            required: true
 
 jobs:
@@ -34,4 +39,5 @@ jobs:
           echo "Tags: ${{ inputs.tags }}"
           echo "Environment: ${{ inputs.environment }}"
           echo "logLevel: ${{ inputs.logLevel }}"
+          echo "parallel: ${{ inputs.parallel }}"
 
