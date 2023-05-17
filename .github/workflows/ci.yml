@@ -23,29 +23,15 @@ on:
            type: environment
            required: true
 
-env:
-  DAY_OF_WEEK: Monday
-
 jobs:
   build:
     runs-on: ubuntu-latest
     name: Build
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Before cache
+      - name: Show parameters
         run: |
-          echo before
-          cat /proc/cpuinfo | grep processor
-
-      - name: Cache
-        id: cache-something
-        uses: actions/cache@v3
-        with:
-          path: was-build.txt
-          key: build-${{ hashFiles('requirements.txt', 'other.txt') }}
-
-      - name: Building database
-        run: ./build.sh
-
+          echo Parameters
+          echo "Tags: ${{ inputs.tags }}"
+          echo "Environment: ${{ inputs.environment }}"
+          echo "logLevel: ${{ inputs.logLevel }}"
 
